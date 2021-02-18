@@ -1,58 +1,28 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
+  const initialStates = {
+    name: "",
+    praice: 1000,
   };
 
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const increment2 = () => {
-    setCount((previousCount) => previousCount + 1);
-  };
-
-  const decrement2 = () => {
-    setCount((previousCount) => previousCount - 1);
-  };
+  const [name, setName] = useState(initialStates.name);
+  const [praice, setPraice] = useState(initialStates.praice);
 
   const reset = () => {
-    setCount(0);
-  };
-
-  const double = () => {
-    setCount(count * 2);
-  };
-
-  const triple = () => {
-    setCount((previousCount) =>
-      previousCount % 3 === 0 ? previousCount / 3 : previousCount
-    );
+    setPraice(initialStates.praice);
+    setName(initialStates.name);
   };
 
   return (
     <>
-      <div>カウント: {count}</div>
-      <div>
-        <button onClick={increment}>カウントアップ</button>
-        <button onClick={decrement}>カウントダウン</button>
-      </div>
-      <div>
-        <button onClick={increment2}>カウントアップ2</button>
-        <button onClick={decrement2}>カウントダウン2</button>
-      </div>
-      <div>
+      <p>
+        現在の{name}は、{praice}円です。
+        <button onClick={() => setPraice(praice + 1)}>+1</button>
+        <button onClick={() => setPraice(praice - 1)}>-1</button>
         <button onClick={reset}>リセット</button>
-      </div>
-      <div>
-        <button onClick={double}>倍</button>
-      </div>
-      <div>
-        <button onClick={triple}>3の倍数の時だけ3で割る</button>
-      </div>
+        <input value={name} onChange={(e) => setName(e.target.value)} />
+      </p>
     </>
   );
 };
