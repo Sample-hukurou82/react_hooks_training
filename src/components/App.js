@@ -41,6 +41,7 @@ const App = () => {
           <textarea
             className="form-control"
             id="formEventBody"
+            value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </div>
